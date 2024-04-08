@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthApi.Api", "AuthApi.Api\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthApi.Domain", "AuthApi.Domain\AuthApi.Domain.csproj", "{F3F117A9-8394-4026-BAB5-C2895F311856}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthApi.Infra", "AuthApi.Infra\AuthApi.Infra.csproj", "{5D1183D4-B785-43E8-9CA2-525A8455CE76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{F3F117A9-8394-4026-BAB5-C2895F311856}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3F117A9-8394-4026-BAB5-C2895F311856}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3F117A9-8394-4026-BAB5-C2895F311856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D1183D4-B785-43E8-9CA2-525A8455CE76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D1183D4-B785-43E8-9CA2-525A8455CE76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D1183D4-B785-43E8-9CA2-525A8455CE76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D1183D4-B785-43E8-9CA2-525A8455CE76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
