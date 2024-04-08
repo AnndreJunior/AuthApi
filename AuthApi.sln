@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthApi.Api", "AuthApi.Api\AuthApi.Api.csproj", "{7CDB4878-E771-4BBC-86B4-18086699949E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthApi.Domain", "AuthApi.Domain\AuthApi.Domain.csproj", "{F3F117A9-8394-4026-BAB5-C2895F311856}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{7CDB4878-E771-4BBC-86B4-18086699949E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CDB4878-E771-4BBC-86B4-18086699949E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CDB4878-E771-4BBC-86B4-18086699949E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3F117A9-8394-4026-BAB5-C2895F311856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3F117A9-8394-4026-BAB5-C2895F311856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3F117A9-8394-4026-BAB5-C2895F311856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3F117A9-8394-4026-BAB5-C2895F311856}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
