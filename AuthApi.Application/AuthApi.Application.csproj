@@ -1,11 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591</NoWarn>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AuthApi.Infra\AuthApi.Infra.csproj" />
-    <ProjectReference Include="..\AuthApi.Application\AuthApi.Application.csproj" />
+    <ProjectReference Include="..\AuthApi.Domain\AuthApi.Domain.csproj" />
     <ProjectReference Include="..\AuthApi.Communication\AuthApi.Communication.csproj" />
   </ItemGroup>
 

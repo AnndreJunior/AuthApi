@@ -1,4 +1,5 @@
 using System.Reflection;
+using AuthApi.Application;
 using AuthApi.Infra;
 using Microsoft.OpenApi.Models;
 
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder
+    .AddApplication()
     .AddInfra();
 
 builder.Services.AddControllers();
