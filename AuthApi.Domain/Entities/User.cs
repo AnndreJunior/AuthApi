@@ -60,6 +60,10 @@ public class User
     {
         if (string.IsNullOrWhiteSpace(username))
             throw new ErrorOnValidationException("Informe seu nome de usuário");
+
+        var usernameTooLong = username.Length > 100;
+        if (usernameTooLong)
+            throw new ErrorOnValidationException("Seu nome de usuário deve conter até 100 caracteres");
     }
 
     private void ValidatePassword(string password)
@@ -70,11 +74,19 @@ public class User
         var passwordTooShort = password.Length < 6;
         if (passwordTooShort)
             throw new ErrorOnValidationException("Sua senha deve conter, pelo menos, seis caracteres");
+
+        var passwordTooLong = password.Length > 200;
+        if (passwordTooLong)
+            throw new ErrorOnValidationException("Sua senha deve conter até 200 caracteres");
     }
 
     private void ValidateName(string name)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ErrorOnValidationException("Informe seu nome");
+
+        var nameTooLong = name.Length > 100;
+        if (nameTooLong)
+            throw new ErrorOnValidationException("Seu nome deve conter até 100 caracteres");
     }
 }
