@@ -23,11 +23,13 @@ public class SignUpUseCase
     public async Task<string> Execute(SignUpRequest request)
     {
         var (Username, Password, Name) = request;
-        var entity = new User(_passwordCryptService, Username, Password, Name);
+        var entity = new User(Username, Password, Name);
 
         var userAlreadyExists = await _authRepository.CheckIfUserExists(Username);
         if (userAlreadyExists)
             throw new ConflictException("Usuário já existe");
+
+        entity.HashPassword(_passwordCryptService);
 
         await _authRepository.SignUp(entity);
 

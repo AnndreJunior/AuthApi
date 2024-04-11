@@ -5,8 +5,6 @@ namespace AuthApi.Domain.Entities;
 
 public class User
 {
-    private readonly IPasswordCrypt _passwordCrypt;
-
     public Guid Id { get; private set; } = Guid.NewGuid();
     public string Username { get; private set; }
     public string Password { get; private set; }
@@ -15,14 +13,12 @@ public class User
     public string? Avatar { get; private set; }
     public bool IsDelete { get; private set; }
 
-    public User(IPasswordCrypt passwordCrypt, string username, string password, string name)
+    public User(string username, string password, string name)
     {
         ValidateUserProps(username, password, name);
 
-        _passwordCrypt = passwordCrypt;
-
         Username = username.Trim();
-        Password = _passwordCrypt.HashPassword(password.Trim());
+        Password = password.Trim();
         Name = name.Trim();
     }
 
@@ -31,6 +27,12 @@ public class User
         ValidateUsername(username);
         ValidatePassword(password);
         ValidateName(name);
+    }
+
+    public void HashPassword(IPasswordCrypt passwordCrypt)
+    {
+        var hash = passwordCrypt.HashPassword(Password);
+        Password = hash;
     }
 
     public void UpdateUsername(string username)
