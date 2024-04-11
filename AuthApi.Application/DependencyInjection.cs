@@ -9,6 +9,7 @@ public static class DependencyInjection
     public static WebApplicationBuilder AddApplication(this WebApplicationBuilder builder)
     {
         builder.Services.AddScoped<SignUpUseCase>();
+        builder.Services.AddScoped<LoginUseCase>();
 
         return builder;
     }
