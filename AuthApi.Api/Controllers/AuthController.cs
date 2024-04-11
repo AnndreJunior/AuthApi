@@ -10,10 +10,12 @@ namespace AuthApi.Api.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly SignUpUseCase _signUpUseCase;
+    private readonly LoginUseCase _loginUseCase;
 
-    public AuthController(SignUpUseCase signUpUseCase)
+    public AuthController(SignUpUseCase signUpUseCase, LoginUseCase loginUseCase)
     {
         _signUpUseCase = signUpUseCase;
+        _loginUseCase = loginUseCase;
     }
 
     [HttpPost("sign-up")]
@@ -25,5 +27,16 @@ public class AuthController : ControllerBase
         var response = await _signUpUseCase.Execute(request);
 
         return Created(string.Empty, new AuthenticationResponse(response));
+    }
+
+    [HttpPost("login")]
+    [ProducesResponseType(typeof(AuthenticationResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Login(LoginRequest request)
+    {
+        var response = await _loginUseCase.Execute(request);
+
+        return Ok(new AuthenticationResponse(response));
     }
 }

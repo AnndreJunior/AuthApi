@@ -31,6 +31,9 @@ public class ExceptionFilter : IExceptionFilter
         if (context.Exception is ConflictException)
             context.HttpContext.Response.StatusCode = StatusCodes.Status409Conflict;
 
+        if (context.Exception is NotFoundException)
+            context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+
         context.Result = new ObjectResult(new ErrorResponse(context.Exception.Message));
     }
 }
