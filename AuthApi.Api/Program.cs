@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Text;
+using AuthApi.Api.Filters;
 using AuthApi.Application;
 using AuthApi.Infra;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -77,6 +78,9 @@ builder.Services.AddSwaggerGen(opts =>
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFilename);
 });
+
+builder.Services.AddRouting(opts => opts.LowercaseUrls = true);
+builder.Services.AddMvc(opts => opts.Filters.Add(typeof(ExceptionFilter)));
 
 var app = builder.Build();
 
