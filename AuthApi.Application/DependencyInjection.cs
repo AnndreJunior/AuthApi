@@ -10,6 +10,7 @@ public static class DependencyInjection
     {
         builder.Services.AddScoped<SignUpUseCase>();
         builder.Services.AddScoped<LoginUseCase>();
+        builder.Services.AddScoped<GetUserDataUseCase>();
 
         return builder;
     }
