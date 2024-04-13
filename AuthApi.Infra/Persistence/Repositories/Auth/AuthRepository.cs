@@ -20,6 +20,13 @@ public class AuthRepository : IAuthRepository
         return userExists;
     }
 
+    public async Task<User?> GetUserData(Guid id)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(user => user.Id == id && user.IsDelete == false);
+
+        return user;
+    }
+
     public async Task<User?> Login(string username)
     {
         var user = await _context.Users
