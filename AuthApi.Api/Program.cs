@@ -77,6 +77,8 @@ builder.Services.AddSwaggerGen(opts =>
 
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFilename);
+
+    opts.IncludeXmlComments(xmlFilePath);
 });
 
 builder.Services.AddRouting(opts => opts.LowercaseUrls = true);
