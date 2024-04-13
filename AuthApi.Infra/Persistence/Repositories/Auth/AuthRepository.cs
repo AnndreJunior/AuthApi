@@ -22,7 +22,8 @@ public class AuthRepository : IAuthRepository
 
     public async Task<User?> Login(string username)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(user => user.Username == username);
+        var user = await _context.Users
+            .FirstOrDefaultAsync(user => user.Username == username && user.IsDelete == false);
 
         return user;
     }
