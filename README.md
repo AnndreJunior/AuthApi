@@ -79,7 +79,7 @@ cd AuthApi.Api
 
 ```bash
 # crie o secret jwt
-dotnet user-secrets set "jwt:secret" "shhhhhh"
+dotnet user-secrets set "jwt:secret" "aBcDeFgH1234567890IjKlMnOpQrStUvWxYz"
 ```
 
 ```bash
