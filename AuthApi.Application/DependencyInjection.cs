@@ -1,4 +1,5 @@
 using AuthApi.Application.UseCases.Auth;
+using AuthApi.Application.UseCases.Profile;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,7 @@ public static class DependencyInjection
         builder.Services.AddScoped<SignUpUseCase>();
         builder.Services.AddScoped<LoginUseCase>();
         builder.Services.AddScoped<GetUserDataUseCase>();
+        builder.Services.AddScoped<UploadAvatarUseCase>();
 
         return builder;
     }
