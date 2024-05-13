@@ -21,6 +21,7 @@
     <ProjectReference Include="..\AuthApi.Infra\AuthApi.Infra.csproj" />
     <ProjectReference Include="..\AuthApi.Application\AuthApi.Application.csproj" />
     <ProjectReference Include="..\AuthApi.Communication\AuthApi.Communication.csproj" />
+    <ProjectReference Include="..\AuthApi.Validators\AuthApi.Validators.csproj" />
   </ItemGroup>
 
 </Project>

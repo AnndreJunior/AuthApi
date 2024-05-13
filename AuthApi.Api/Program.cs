@@ -3,6 +3,7 @@ using System.Text;
 using AuthApi.Api.Filters;
 using AuthApi.Application;
 using AuthApi.Infra;
+using AuthApi.Validators;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -31,7 +32,8 @@ builder.Services.AddAuthentication();
 // Add services to the container.
 builder
     .AddApplication()
-    .AddInfra();
+    .AddInfra()
+    .AddValidators();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
