@@ -1,5 +1,6 @@
 using AuthApi.Domain.Adapters.Repositories.Auth;
 using AuthApi.Domain.Adapters.Services.Crypt;
+using AuthApi.Domain.Adapters.Services.File;
 using AuthApi.Domain.Adapters.Services.Jwt;
 using AuthApi.Infra.Persistence;
 using AuthApi.Infra.Persistence.Repositories.Auth;
@@ -19,8 +20,19 @@ public static class DependencyInjection
         AddJwtService(builder);
         AddDbContext(builder);
         AddRepositories(builder);
+        AddFileService(builder);
 
         return builder;
+    }
+
+    public static void AddFileService(WebApplicationBuilder builder)
+    {
+        var supabaseUrl = builder.Configuration["supabase:url"]
+            ?? throw new Exception("Supabase url not found");
+        var supabaseKey = builder.Configuration["supabase:key"]
+            ?? throw new Exception("Supabase key not found");
+
+        builder.Services.AddScoped<IFileService>(profiver => new FileService(supabaseUrl, supabaseKey));
     }
 
     private static void AddCryptService(WebApplicationBuilder builder)
