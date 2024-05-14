@@ -29,6 +29,11 @@ public class User
         ValidateName(name);
     }
 
+    public void AddAvatar(string avatar)
+    {
+        Avatar = avatar;
+    }
+
     public void HashPassword(IPasswordCrypt passwordCrypt)
     {
         var hash = passwordCrypt.HashPassword(Password);

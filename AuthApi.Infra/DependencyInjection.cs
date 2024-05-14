@@ -1,4 +1,5 @@
 using AuthApi.Domain.Adapters.Repositories.Auth;
+using AuthApi.Domain.Adapters.Repositories.Profile;
 using AuthApi.Domain.Adapters.Services.Crypt;
 using AuthApi.Domain.Adapters.Services.File;
 using AuthApi.Domain.Adapters.Services.Jwt;
@@ -57,5 +58,6 @@ public static class DependencyInjection
     private static void AddRepositories(WebApplicationBuilder builder)
     {
         builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+        builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
     }
 }
