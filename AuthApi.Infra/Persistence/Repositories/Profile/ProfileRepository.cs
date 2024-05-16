@@ -14,11 +14,11 @@ public class ProfileRepository : IProfileRepository
         _context = context;
     }
 
-    public async Task<bool> FindUserById(Guid id)
+    public async Task<User?> FindUserById(Guid id)
     {
         var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
 
-        return user != null;
+        return user;
     }
 
     public async Task<User> UploadAvatar(string avatarLink, Guid id)

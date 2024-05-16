@@ -22,7 +22,7 @@ public class UploadAvatarUseCase
 
     public async Task<ProfileUpdateResponse> Execute(IFormFile avatar, Guid id)
     {
-        var userDoesNotExists = await _profileRepository.FindUserById(id) == false;
+        var userDoesNotExists = await _profileRepository.FindUserById(id) == null;
         if (userDoesNotExists)
             throw new ConflictException("Usuário não encontrado");
 
