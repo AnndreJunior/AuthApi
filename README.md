@@ -56,6 +56,9 @@ Banco instalado e configurado execute o seguinte comando:
 psql -U postgres -c "CREATE DATABASE users_db;"
 ```
 
+### Serviço de storage
+O serviço de storage usado nesse projeto é fornecido pelo Supabase, usando o plano gratuito. Para mais informações acesse o site do [Supabase](https://supabase.com/).
+
 ## Como executar a aplicação
 
 Antes de executar a aplicação, clone o repositório:
@@ -78,13 +81,23 @@ cd AuthApi.Api
 ```
 
 ```bash
-# crie o secret jwt
+# armazene o secret jwt
 dotnet user-secrets set "jwt:secret" "aBcDeFgH1234567890IjKlMnOpQrStUvWxYz"
 ```
 
 ```bash
-# crie a string de conexão do banco
+# armazene a string de conexão do banco
 dotnet user-secrets set "database:connection" "Host=localhost;Database=users_db;Username=postgres;Password=admin"
+```
+
+```bash
+# armazene a url do seu projeto Supabase
+dotnet user-secrets set "supabase:url" "<link do projeto>"
+```
+
+```bash
+# armazene sua key para usar o serviço do Supabase
+dotnet user-secrets set "supabase:key" "<secret key do projeto>"
 ```
 
 ```bash
