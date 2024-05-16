@@ -20,7 +20,7 @@ public class UserController : ControllerBase
     [HttpPut("upload-avatar")]
     [ProducesResponseType(typeof(ProfileUpdateResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status409Conflict)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UploadAvatar(IFormFile avatar)
     {
         var tokenPayload = User.Identity?.Name;

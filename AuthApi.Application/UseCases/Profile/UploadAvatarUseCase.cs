@@ -24,7 +24,7 @@ public class UploadAvatarUseCase
     {
         var userDoesNotExists = await _profileRepository.FindUserById(id) == null;
         if (userDoesNotExists)
-            throw new ConflictException("Usuário não encontrado");
+            throw new NotFoundException("Usuário não encontrado");
 
         var isNotImage = _fileValidator.IsImage(avatar.OpenReadStream()) == false;
         if (isNotImage)
