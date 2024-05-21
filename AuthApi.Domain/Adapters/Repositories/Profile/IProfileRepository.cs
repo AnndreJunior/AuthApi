@@ -9,4 +9,5 @@ public interface IProfileRepository
     Task<User> ChangeUsername(string username, Guid id);
     Task<User> ChangeName(string name, Guid id);
     Task ChangePassword(User user);
+    Task Delete(Guid id);
 }

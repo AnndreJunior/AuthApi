@@ -15,17 +15,20 @@ public class UserController : ControllerBase
     private readonly ChangeUsernameUseCase _changeUsernameUseCase;
     private readonly ChangePasswordUseCase _changePasswordUseCase;
     public readonly ChangeNameUseCase _changeNameUseCase;
+    private readonly DeleteProfileUseCase _deleteProfileUseCase;
 
     public UserController(
         UploadAvatarUseCase uploadAvatarUseCase,
         ChangeUsernameUseCase changeUsernameUseCase,
         ChangePasswordUseCase changePasswordUseCase,
-        ChangeNameUseCase changeNameUseCase)
+        ChangeNameUseCase changeNameUseCase,
+        DeleteProfileUseCase deleteProfileUseCase)
     {
         _uploadAvatarUseCase = uploadAvatarUseCase;
         _changeUsernameUseCase = changeUsernameUseCase;
         _changePasswordUseCase = changePasswordUseCase;
         _changeNameUseCase = changeNameUseCase;
+        _deleteProfileUseCase = deleteProfileUseCase;
     }
 
     [HttpPut("upload-avatar")]
@@ -78,5 +81,17 @@ public class UserController : ControllerBase
         var response = await _changeNameUseCase.Execute(request, userId);
 
         return Created(string.Empty, response);
+    }
+
+    [HttpDelete]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Delete()
+    {
+        var tokenPayload = User.Identity?.Name;
+        var userId = Guid.Parse(tokenPayload ?? "");
+        await _deleteProfileUseCase.Execute(userId);
+
+        return NoContent();
     }
 }

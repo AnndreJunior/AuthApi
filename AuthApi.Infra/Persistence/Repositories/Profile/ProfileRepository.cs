@@ -41,6 +41,13 @@ public class ProfileRepository : IProfileRepository
         return user;
     }
 
+    public async Task Delete(Guid id)
+    {
+        var user = await _context.Users.FirstAsync(x => x.Id == id);
+        user.DeleteUser();
+        await _context.SaveChangesAsync();
+    }
+
     public async Task<User?> FindUserById(Guid id)
     {
         var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
