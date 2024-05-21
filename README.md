@@ -27,7 +27,7 @@ Este projeto consiste em uma API de autenticação feita em C# e .Net que permit
 - :heavy_check_mark: Upload de fotos de perfil
 - :heavy_check_mark: Mudar nome de usuário
 - :heavy_check_mark: Mudar senha
-- :warning: Mudar nome
+- :heavy_check_mark: Mudar nome
 - :warning: Deletar perfil
 
 ## Pré-requisitos
