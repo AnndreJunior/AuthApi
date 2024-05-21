@@ -28,7 +28,7 @@ Este projeto consiste em uma API de autenticação feita em C# e .Net que permit
 - :heavy_check_mark: Mudar nome de usuário
 - :heavy_check_mark: Mudar senha
 - :heavy_check_mark: Mudar nome
-- :warning: Deletar perfil
+- :heavy_check_mark: Deletar perfil
 
 ## Pré-requisitos
 
