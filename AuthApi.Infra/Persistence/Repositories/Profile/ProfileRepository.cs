@@ -14,6 +14,15 @@ public class ProfileRepository : IProfileRepository
         _context = context;
     }
 
+    public async Task<User> ChangeName(string name, Guid id)
+    {
+        var entity = await _context.Users.FirstAsync(x => x.Id ==  id);
+        entity.UpdateName(name);
+        await _context.SaveChangesAsync();
+
+        return entity;
+    }
+
     public async Task ChangePassword(User user)
     {
         var entity = await _context.Users.FirstAsync(x => x.Id == user.Id);

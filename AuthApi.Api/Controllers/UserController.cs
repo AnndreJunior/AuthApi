@@ -14,15 +14,18 @@ public class UserController : ControllerBase
     private readonly UploadAvatarUseCase _uploadAvatarUseCase;
     private readonly ChangeUsernameUseCase _changeUsernameUseCase;
     private readonly ChangePasswordUseCase _changePasswordUseCase;
+    public readonly ChangeNameUseCase _changeNameUseCase;
 
     public UserController(
         UploadAvatarUseCase uploadAvatarUseCase,
         ChangeUsernameUseCase changeUsernameUseCase,
-        ChangePasswordUseCase changePasswordUseCase)
+        ChangePasswordUseCase changePasswordUseCase,
+        ChangeNameUseCase changeNameUseCase)
     {
         _uploadAvatarUseCase = uploadAvatarUseCase;
         _changeUsernameUseCase = changeUsernameUseCase;
         _changePasswordUseCase = changePasswordUseCase;
+        _changeNameUseCase = changeNameUseCase;
     }
 
     [HttpPut("upload-avatar")]
@@ -62,5 +65,18 @@ public class UserController : ControllerBase
         await _changePasswordUseCase.Execute(request, userId);
 
         return Created();
+    }
+
+    [HttpPut("change-name")]
+    [ProducesResponseType(typeof(ProfileUpdateResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> ChangeName(ChangeNameRequest request)
+    {
+        var tokenPayload = User.Identity?.Name;
+        var userId = Guid.Parse(tokenPayload ?? "");
+        var response = await _changeNameUseCase.Execute(request, userId);
+
+        return Created(string.Empty, response);
     }
 }

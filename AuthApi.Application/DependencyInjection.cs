@@ -15,6 +15,7 @@ public static class DependencyInjection
         builder.Services.AddScoped<UploadAvatarUseCase>();
         builder.Services.AddScoped<ChangeUsernameUseCase>();
         builder.Services.AddScoped<ChangePasswordUseCase>();
+        builder.Services.AddScoped<ChangeNameUseCase>();
 
         return builder;
     }
