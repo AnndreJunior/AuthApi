@@ -13,13 +13,16 @@ public class UserController : ControllerBase
 {
     private readonly UploadAvatarUseCase _uploadAvatarUseCase;
     private readonly ChangeUsernameUseCase _changeUsernameUseCase;
+    private readonly ChangePasswordUseCase _changePasswordUseCase;
 
     public UserController(
         UploadAvatarUseCase uploadAvatarUseCase,
-        ChangeUsernameUseCase changeUsernameUseCase)
+        ChangeUsernameUseCase changeUsernameUseCase,
+        ChangePasswordUseCase changePasswordUseCase)
     {
         _uploadAvatarUseCase = uploadAvatarUseCase;
         _changeUsernameUseCase = changeUsernameUseCase;
+        _changePasswordUseCase = changePasswordUseCase;
     }
 
     [HttpPut("upload-avatar")]
@@ -46,5 +49,18 @@ public class UserController : ControllerBase
         var response = await _changeUsernameUseCase.Execute(request, userId);
 
         return Created(string.Empty, response);
+    }
+
+    [HttpPut("change-password")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> ChangePassword(ChangePasswordRequest request)
+    {
+        var tokenPayload = User.Identity?.Name;
+        var userId = Guid.Parse(tokenPayload ?? "");
+        await _changePasswordUseCase.Execute(request, userId);
+
+        return Created();
     }
 }
